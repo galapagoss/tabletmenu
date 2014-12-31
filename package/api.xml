@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <!-- *************************
+    		 *   API SETTINGS        *
+         ************************* -->
+    
+    <package name="api" extends="web-default" namespace="/api">
+    
+    
+ 			<default-interceptor-ref name="webInterceptors"/>
+ 			
+    	<!--************  Global Results **************** -->
+ 			<global-results>
+				<result type="json" name="success">
+			   <param name="noCache">true</param>
+			   <param name="ignoreHierarchy">false</param>
+			   <param name="excludeNullProperties">true</param>
+			   <param name="root">result</param>
+			   <param name="enumAsBean">true</param>
+			  </result>
+			</global-results>
+			
+			
+			<!-- Bind -->
+			<action name="bind" class="com.oxybay.web.actions.api.BindAction"></action>
+			<!-- Check Update -->
+			<action name="checkUpdate" class="com.oxybay.web.actions.api.CheckUpdateAction"></action>
+			<!-- Update Complete -->
+			<action name="updateComplete" class="com.oxybay.web.actions.api.UpdateCompleteAction"></action>
+			<!-- UnBind -->
+			<action name="unbind" class="com.oxybay.web.actions.api.UnBindAction"></action>
+			
+		</package>
+		
+
+</struts>

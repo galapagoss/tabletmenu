@@ -1,0 +1,14 @@
+** Tags
+** Sconti
+-- Promozioni (insieme di sconti, abbinamento prodotti, scelta di una data,..)
+-- Gestione tags (modifica label, cancellazione, unione, assegnazione sconti)
+-- Visione sconti ereditati (attraverso la categoria o il tag)
+-- Simulatore di prezzo (visione del prezzo a seconda della data e ora)
+-- Modifica dati account (nome, cognome,..)
+-- Modifica password utente
+-- Dettaglio account (data di attivazione, data scadenza, servizi,.. )
+-- Timeline per Home menu del giorno
+-- Sistemare grafica dettaglio menu del giorno per allineare a quella degli sconti
+-- EVENTUALE: Gestire anche un menu del giorno in formato testo e quindi localizzato
+-- EVENTUALE: Possibilità di inserire un testo localizzato per il menu
+-- Note sui prodotti non in categoria

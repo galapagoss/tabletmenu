@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="package"/>
+	<classpathentry kind="lib" path="app/WEB-INF/lib/activation.jar"/>
+	<classpathentry kind="lib" path="app/WEB-INF/lib/commons-codec-1.5.jar"/>
+	<classpathentry kind="lib" path="app/WEB-INF/lib/commons-fileupload-1.2.1.jar"/>
+	<classpathentry kind="lib" path="app/WEB-INF/lib/commons-httpclient-3.1.jar"/>
+	<classpathentry kind="lib" path="app/WEB-INF/lib/commons-io-1.4.jar"/>
+	<classpathentry kind="lib" path="app/WEB-INF/lib/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="lib" path="app/WEB-INF/lib/freemarker-2.3.13.jar"/>
+	<classpathentry kind="lib" path="app/WEB-INF/lib/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="app/WEB-INF/lib/ognl-2.6.11.jar"/>
+	<classpathentry kind="lib" path="app/WEB-INF/lib/struts2-core-2.2.1.jar"/>
+	<classpathentry kind="lib" path="app/WEB-INF/lib/urlrewrite-3.2.0.jar"/>
+	<classpathentry kind="lib" path="app/WEB-INF/lib/xwork-core-2.2.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 7.0/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="app/WEB-INF/lib/progressUpload-plugin.jar"/>
+	<classpathentry kind="lib" path="app/WEB-INF/lib/commons-compress-1.4.1.jar"/>
+	<classpathentry kind="lib" path="app/WEB-INF/lib/gcm-server.jar"/>
+	<classpathentry kind="lib" path="app/WEB-INF/lib/struts2-json-plugin-2.1.8.1.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 7.0/lib/catalina.jar"/>
+	<classpathentry kind="output" path="app/WEB-INF/classes"/>
+</classpath>

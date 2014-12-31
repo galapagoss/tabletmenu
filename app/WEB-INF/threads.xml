@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<master-server>localhost</master-server>
+	<threads>
+	<!--	<thread name="FeedUpdate" type="INTERVAL" class="it.dotland.tci.resources.scheduler.thread.FeedUpdate" interval="600" log="false" exclusive="false">
+		 <httpTimeout>30000</httpTimeout>
+		 <maxItem>100</maxItem>
+		 <imagesHome>27</imagesHome>
+		 <imagesHomeForGallery>15</imagesHomeForGallery>
+		 <delayTimeProcessing>0</delayTimeProcessing>
+		 <UrlBlogPattern>http://www.touringclub.it/club/pg/blog/[USERNAME]?view=rss</UrlBlogPattern>
+		 <UrlGalleryPattern>http://www.touringclub.it/club/pg/photos/album/[ID]/?view=rss</UrlGalleryPattern>
+		 <BlogBaseUrl>http://www.touringclub.it</BlogBaseUrl>
+		</thread>
+		<thread name="PageUpdate" type="INTERVAL" class="it.dotland.tci.resources.scheduler.thread.PageUpdate" interval="600" log="false" exclusive="false"/>
+		<thread name="CacheGarbage" type="INTERVAL" class="it.dotland.tci.resources.scheduler.thread.CacheGarbage" interval="60" log="false" exclusive="false"/>
+		-->
+	</threads>
+</config>

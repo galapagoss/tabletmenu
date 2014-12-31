@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 3.2//EN"
+        "http://tuckey.org/res/dtds/urlrewrite3.2.dtd">
+
+<urlrewrite>
+    <rule>
+        <note>Api Device (action/deviceID/idmenu/other params)</note>
+        <from>^\/api\/([a-zA-Z]+)\/(.*)\/([0-9]+)(.*)</from>
+        <to>/api/$1.do?device=$2&amp;menu=$3</to>
+    </rule>
+<!-- 
+    <rule>
+        <note>HomePage</note>
+        <from>^/$</from>
+        <to>/home.do</to>
+    </rule>
+    <rule>
+        <note>HomePage</note>
+        <from>/home.do/(.*)</from>
+        <to>/home.do?dispatch=$1</to>
+    </rule>
+    <rule>
+        <note>Article</note>
+        <from>/articolo\/([0-9]+)/(.*)</from>
+        <to>/article.do?id=$1</to>
+    </rule>
+    <rule>
+        <note>Journal</note>
+        <from>/rivista\/([0-9]+)/(.*)</from>
+        <to>/journal.do?id=$1</to>
+    </rule>
+    <rule>
+        <note>Content</note>
+        <from>/sezione\/([0-9]+)/(.*)</from>
+        <to>/content.do?dispatch=$1</to>
+    </rule>
+    <rule>
+        <note>Archive</note>
+        <from>/archivio</from>
+        <to>/archive.do</to>
+    </rule>
+    <rule>
+        <note>Archive</note>
+        <from>/archive.do\/([0-9]+)/(.*)</from>
+        <to>/archive.do?dispatch=$1</to>
+    </rule>
+    <rule>
+        <note>Search</note>
+        <from>/ricerca</from>
+        <to>/search.do</to>
+    </rule>
+    <rule>
+        <note>Search</note>
+        <from>/search.do\/(.*)</from>
+        <to>/search.do?searchText=$1</to>
+    </rule>
+    <rule>
+        <note>Travels</note>
+        <from>/i-vostri-viaggi</from>
+        <to>/community.do</to>
+    </rule>
+    <rule>
+        <note>Travels Blog</note>
+        <from>/community.do\/([0-9]+)/(.*)/([0-9]+)/(.*)</from>
+        <to>/community.do?feedId=$1&amp;postId=$3</to>
+    </rule>
+    <rule>
+        <note>Registration</note>
+        <from>/iscrizione</from>
+        <to>/register.do</to>
+    </rule>
+    <rule>
+        <note>View Journal</note>
+        <from>/sfoglia\/([0-9]+)\/([0-9]+)\/(.*)</from>
+        <to>/viewJournal.do?idJournal=$1&amp;idArticle=$2</to>
+    </rule>
+    <rule>
+        <note>Required Upgrade</note>
+        <from>/riservato\/(.*)</from>
+        <to>/requiredUpgrade.do?profile=$1</to>
+    </rule>
+
+
+    <outbound-rule>
+        <note>HomePage</note>
+        <from>/home.do</from>
+        <to>/</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>HomePage</note>
+        <from>/copertina\?dispatch=(.*)</from>
+        <to>/copertina/$1</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>Article</note>
+        <from>/article.do\?id=([0-9]+)(.*)title=(.*)</from>
+        <to>/articolo/$1/$3</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>Journal</note>
+        <from>/journal.do\?id=([0-9]+)(.*)pub=([0-9]+)(.*)title=(.*)</from>
+        <to>/rivista/$1/$3/$5</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>Content</note>
+        <from>/content.do\?dispatch=([0-9]+)(.*)title=(.*)</from>
+        <to>/sezione/$1/$3</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>Archive</note>
+        <from>/archive.do</from>
+        <to>/archivio</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>Archive</note>
+        <from>/archivio\?id=([0-9]+)(.*)pub=([0-9]+)(.*)title=(.*)</from>
+        <to>/archivio/$1/$3/$5</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>Search</note>
+        <from>/search.do</from>
+        <to>/ricerca</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>Search</note>
+        <from>/ricerca\?searchText=(.*)</from>
+        <to>/ricerca/$1</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>Travels</note>
+        <from>/community.do</from>
+        <to>/i-vostri-viaggi</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>Travels Blog</note>
+        <from>/i-vostri-viaggi\?feedId=([0-9]+)(.*)postId=([0-9]+)(.*)user=([a-zA-Z]+)(.*)title=(.*)</from>
+        <to>/i-vostri-viaggi/$1/$5/$3/$7</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>Registration</note>
+        <from>/register.do</from>
+        <to>/iscrizione</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>View Journal</note>
+        <from>/viewJournal.do\?idJournal=([0-9]+)(.*)idArticle=([0-9]+)(.*)pub=([0-9]+)(.*)title=(.*)</from>
+        <to>/sfoglia\/$1/$3/$5/$7</to>
+    </outbound-rule>
+     <outbound-rule>
+        <note>Required Upgrade</note>
+        <from>/requiredUpgrade.do</from>
+        <to>/riservato</to>
+    </outbound-rule>
+ -->
+</urlrewrite>
+

@@ -1,0 +1,37 @@
+CREATE OR REPLACE SQL SECURITY INVOKER VIEW view_active_attachment AS
+SELECT logo as img,_id as id_menu FROM menu WHERE logo IS NOT NULL AND deleted IS NULL AND active=1
+UNION 
+SELECT img,id_menu FROM category WHERE img IS NOT NULL AND deleted IS NULL AND active=1
+UNION 
+SELECT b.img,b.id_menu FROM product b INNER JOIN product_2_category d ON b._id=d.id_product INNER JOIN category e ON d.id_category=e._id AND e.active=1 AND e.deleted IS NULL WHERE b.img IS NOT NULL AND b.active=1 AND b.deleted IS NULL
+
+CREATE OR REPLACE SQL SECURITY INVOKER VIEW view_active_inherit_tags AS
+SELECT p.id_menu,'P' as typetag,0 as id_ref,p._id as id_product,ptag.id_tag
+FROM product p
+INNER JOIN product_2_tag ptag ON p._id=ptag.id_product
+WHERE p.active=1 AND p.deleted IS NULL
+UNION ALL
+SELECT c.id_menu,'C',c._id,cp._id,ctag.id_tag
+FROM category c
+INNER JOIN category_2_tag ctag ON c._id=ctag.id_category
+INNER JOIN product_2_category cpc ON c._id=cpc.id_category
+INNER JOIN product cp ON cpc.id_product=cp._id AND cp.active=1 AND cp.deleted IS NULL
+WHERE c.active=1 AND c.deleted IS NULL;
+
+
+CREATE OR REPLACE SQL SECURITY INVOKER VIEW view_inherit_discounts AS
+SELECT a1.id_menu,'T' as type_discount,a1.id_tag as id_ref,a1.id_ref as id_ref2,a1.id_product,b1.id_discount,a1.typetag
+FROM view_active_inherit_tags a1
+INNER JOIN tag_2_discount b1 ON a1.id_tag=b1.id_tag
+UNION ALL
+SELECT a3.id_menu,'P' as type_discount,0,0,a3._id,b3.id_discount,''
+FROM product a3
+INNER JOIN product_2_discount b3 ON a3._id=b3.id_product
+WHERE a3.active=1 AND a3.deleted IS NULL
+UNION ALL
+SELECT a2.id_menu,'C' as type_discount,a2._id as id_ref,0,d2._id,b2.id_discount,''
+FROM category a2
+INNER JOIN category_2_discount b2 ON a2._id=b2.id_category
+INNER JOIN product_2_category c2 ON a2._id=c2.id_category
+INNER JOIN product d2 ON c2.id_product=d2._id AND d2.active=1 AND d2.deleted IS NULL
+WHERE a2.active=1 AND a2.deleted IS NULL;

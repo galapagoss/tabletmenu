@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="client" extends="struts-default" namespace="/">
+    
+  	<!--************  Interceptors **************** -->
+ 	 <default-interceptor-ref name="defaultStack"/>
+  
+  	<!--************  Global Results **************** -->
+		<global-results>
+			<result name="general.error">common/error.html</result>
+			<result name="general.token">common/token.html</result>
+			<result name="general.home" type="redirectAction">home</result> 
+		</global-results>  
+   
+    <!-- Home -->
+    <action name="home" class="com.oxybay.web.actions.HomeAction">
+    	<result name="home">site/home.jsp</result>
+    	<result name="home2">site/home2.jsp</result>
+    </action>
+      
+	</package>
+
+</struts>

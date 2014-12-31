@@ -1,0 +1,19 @@
+<Context docBase="D:/Progetti/Tablet Menu/app" privileged="true" reloadable="true">
+
+  <Resource  name="jdbc/tablet_menu"  
+             auth="Container" 
+             type="javax.sql.DataSource"  
+             username="root"  
+             password="admin" 
+             factory="org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory" 
+             driverClassName="com.mysql.jdbc.Driver"  
+             url="jdbc:mysql://localhost:3306/tablet_menu"
+	         maxActive="30"
+	         minIdle="2"  
+	         maxIdle="15"
+	         validationQuery="select 1 from tablet_menu.zz_valid_connect limit 1"
+	         testOnReturn="true"
+	         autoReconnect="false"
+	         timeBetweenEvictionRunsMillis="60000"
+	         testWhileIdle="true" />
+</Context>

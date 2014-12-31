@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN" "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+<validators>
+ <field name="bean.title">
+  <field-validator type="requiredstring"><message key="common.validator.required"/></field-validator>
+  <field-validator type="stringlength">
+   <param name="maxLength">100</param>
+   <message key="common.validator.stringlength"></message>
+  </field-validator>
+ </field>
+ <field name="bean.currency.id">
+  <field-validator type="required"><message key="common.validator.required"/></field-validator>
+ </field>
+ <field name="bean.logo.datafile">
+  <field-validator type="fileExtension">
+   <param name="allowedContents">image/jpeg,image/gif,image/png</param>
+   <message key="common.validator.file"/>
+  </field-validator>
+ </field>
+ <field name="bean.defaultLanguage">
+  <field-validator type="required"><message key="menu.messages.validator.languages"/></field-validator>
+ </field>
+</validators>

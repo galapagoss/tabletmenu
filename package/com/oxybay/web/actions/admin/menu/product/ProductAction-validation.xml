@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN" "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+<validators>
+ <field name="bean.img.datafile">
+  <field-validator type="fileExtension">
+   <param name="allowedContents">image/jpeg,image/gif,image/png</param>
+   <message key="common.validator.file"/>
+  </field-validator>
+ </field>
+ <field name="bean.price">
+  <field-validator type="double">
+   <param name="minInclusive">0</param>
+   <message key="common.validator.double1"/>
+  </field-validator>
+ </field>
+</validators>

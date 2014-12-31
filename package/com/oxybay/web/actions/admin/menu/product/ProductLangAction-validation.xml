@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN" "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+<validators>
+ <field name="bean.idProduct">
+  <field-validator type="required">
+   <message key="common.validator.required"/>
+  </field-validator>
+ </field>
+ <field name="bean.label">
+  <field-validator type="requiredstring">
+   <message key="common.validator.required"/>
+  </field-validator>
+ </field>
+ <field name="bean.title">
+  <field-validator type="requiredstring">
+   <message key="common.validator.required"/>
+  </field-validator>
+ </field>
+</validators>

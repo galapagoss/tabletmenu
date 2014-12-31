@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+		
+		<package name="web-default" extends="json-default" abstract="true">
+		 <interceptors>
+			<interceptor name="resourcesLoad" class="com.oxybay.web.resources.interceptors.ResourcesInterceptor"/>
+			
+			<interceptor-stack name="webInterceptors">
+			  <interceptor-ref name="resourcesLoad"/>
+			  <interceptor-ref name="defaultStack"/>
+			</interceptor-stack>
+	   </interceptors>
+		</package>
+
+    <!-- Admin Section -->
+    <include file="admin.xml"/>
+    
+    <!-- API Section -->
+    <include file="api.xml"/>
+    
+    <!-- Site Section -->
+    <include file="site.xml"/>
+    
+</struts>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+  <constant name="struts.action.excludePattern" value="/admin/html/*" />
+  
+	<package name="admin" extends="struts-default" namespace="/admin">
+	
+		<!--************  Interceptors **************** -->
+		<interceptors>
+			<interceptor name="resourcesLoad" class="com.oxybay.web.resources.interceptors.ResourcesInterceptor"/>
+			<interceptor name="prepareInput" class="com.oxybay.web.resources.interceptors.InputPrepareInterceptor"/>
+			<interceptor name="tokenSessionForm" class="com.oxybay.web.resources.interceptors.TokenSessionForm"/>
+			
+			
+			<interceptor-stack name="adminStack">
+				<interceptor-ref name="prepareInput"/>
+				<interceptor-ref name="resourcesLoad"/>
+<!--				<interceptor-ref name="tokenSessionForm">-->
+<!--         <param name="includeMethods">postData</param>-->
+<!--        </interceptor-ref>-->
+				<interceptor-ref name="exception"/>
+        <interceptor-ref name="alias"/>
+        <interceptor-ref name="servletConfig"/>
+        <interceptor-ref name="i18n"/>
+        <interceptor-ref name="prepare"/>
+        <interceptor-ref name="chain"/>
+        <interceptor-ref name="scopedModelDriven"/>
+        <interceptor-ref name="modelDriven"/>
+        <interceptor-ref name="fileUpload"/>
+        <interceptor-ref name="checkbox"/>
+        <interceptor-ref name="multiselect"/>
+        <interceptor-ref name="staticParams"/>
+        <interceptor-ref name="actionMappingParams"/>
+        <interceptor-ref name="params">
+         <param name="excludeParams">dojo\..*,^struts\..*</param>
+        </interceptor-ref>
+        <interceptor-ref name="conversionError"/>
+        <interceptor-ref name="validation">
+         <param name="includeMethods">postData</param>
+        </interceptor-ref>
+        <interceptor-ref name="workflow">
+         <param name="includeMethods">postData</param>
+        </interceptor-ref>
+        <interceptor-ref name="debugging"/>
+			</interceptor-stack>
+	  </interceptors>
+	  <default-interceptor-ref name="adminStack"/>
+	  
+	  <!--************  Default Action Ref **************** -->
+	  <default-action-ref name="login"/>
+    
+    <!--************  Global Results **************** -->
+		<global-results>
+			<result name="general.error">../common/error.html</result>
+			<result name="general.home" type="redirectAction">home</result> 
+			<result name="general.chooseDomain" type="redirectAction">chooseDomain</result>
+			<result name="general.no.session" type="redirectAction">login</result>
+			<result name="general.no.access">common/noAccess.jsp</result>
+			<result name="general.no.token">common/noToken.jsp</result>
+		</global-results>
+		
+		<!--  Home -->
+		<action name="home" class="com.oxybay.web.actions.admin.HomeAction">
+      <result name="success">home.jsp</result>
+    </action>
+		
+		<!-- Login -->
+		<action name="login!*" method="{1}" class="com.oxybay.web.actions.admin.profile.LoginAction">
+      <result name="login">login.jsp</result>
+      <result name="logOK" type="redirectAction">home</result>
+    </action>
+     
+    <!-- Logout -->
+    <action name="logout" class="com.oxybay.web.actions.admin.profile.LogoutAction">
+      <result name="success" type="redirectAction">login</result>
+    </action>
+    
+    <!-- User -->
+    <action name="user!*" method="{1}" class="com.oxybay.web.actions.admin.profile.user.UserAction">    															
+      <result name="success">profile/user/home.jsp</result>
+      <result name="input">profile/user/edit.jsp</result>
+    </action>
+    
+    <!-- User Password -->
+    <action name="pwd!*" method="{1}" class="com.oxybay.web.actions.admin.profile.user.PasswordAction">    															
+      <result name="input">profile/user/pwd.jsp</result>
+    </action>
+    
+    <!-- Choose Domain -->
+    <action name="chooseDomain!*" method="{1}" class="com.oxybay.web.actions.admin.profile.ChooseDomainAction">    															
+      <result name="input">profile/chooseDomain.jsp</result>
+    </action>
+    
+    <!-- Menu Manager -->
+    <action name="menuManager!*" method="{1}" class="com.oxybay.web.actions.admin.menu.general.MenuManagerAction">    															
+      <result name="input">menu/general/manager.jsp</result>
+    </action>
+    
+    <!-- Menu Text Languages -->
+    <action name="menuTextLang!*" method="{1}" class="com.oxybay.web.actions.admin.menu.general.MenuTextAction">    															
+      <result name="input">menu/general/text.jsp</result>
+      <result name="close">menu/general/close.jsp</result>
+    </action>
+    
+    <!-- Menu Version -->
+    <action name="menuVersion!*" method="{1}" class="com.oxybay.web.actions.admin.menu.version.MenuVersionAction">    															
+      <result name="success">menu/version/home.jsp</result>
+      <result name="check">menu/version/check.jsp</result>
+    </action>
+    
+    <!-- Menu Deploy -->
+    <action name="menuDeploy!*" method="{1}" class="com.oxybay.web.actions.admin.menu.version.MenuDeployAction">    															
+      <result name="success">menu/version/deploy_success.jsp</result>
+      <result name="error">menu/version/deploy_error.jsp</result>
+    </action>
+    
+    <!-- Menu Devices -->
+    <action name="device!*" method="{1}" class="com.oxybay.web.actions.admin.menu.device.DeviceAction">    															
+      <result name="success">menu/device/home.jsp</result>
+    </action>
+    
+    <!-- Category -->
+    <action name="category!*" method="{1}" class="com.oxybay.web.actions.admin.menu.category.CategoryAction">    															
+      <result name="success">menu/category/home.jsp</result>
+      <result name="input">menu/category/edit.jsp</result>
+      <result name="language" type="redirectAction">
+       <param name="actionName">categoryLang</param>
+       <param name="bean.idCategory">${bean.id}</param>
+       <param name="bean.label">${bean.mainLang.label}</param>
+      </result>
+    </action>
+    <!-- Category Language -->
+    <action name="categoryLang!*" method="{1}" class="com.oxybay.web.actions.admin.menu.category.CategoryLangAction">    															
+      <result name="input">menu/category/lang.jsp</result>
+      <result name="close">menu/category/close.jsp</result>
+    </action>
+    
+     <!-- Product -->
+    <action name="product!*" method="{1}" class="com.oxybay.web.actions.admin.menu.product.ProductAction">    															
+      <result name="success">menu/product/home.jsp</result>
+      <result name="input">menu/product/edit.jsp</result>
+      <result name="discounts">menu/product/discounts.jsp</result>
+      <result name="language" type="redirectAction">
+       <param name="actionName">productLang</param>
+       <param name="bean.idProduct">${bean.id}</param>
+       <param name="bean.label">${bean.mainLang.label}</param>
+      </result>
+    </action>
+    <!-- Product Language -->
+    <action name="productLang!*" method="{1}" class="com.oxybay.web.actions.admin.menu.product.ProductLangAction">    															
+      <result name="input">menu/product/lang.jsp</result>
+      <result name="close">menu/product/close.jsp</result>
+    </action>
+    
+    <!-- Tool - Cache Monitor -->
+    <action name="cacheMonitor" class="com.oxybay.web.actions.admin.tools.CacheMonitorAction">    															
+      <result name="success">tools/cache.jsp</result>
+    </action>
+    <!-- Tool - DB Monitor -->
+    <action name="dbMonitor" class="com.oxybay.web.actions.admin.tools.DBMonitorAction">    															
+      <result name="success">tools/connections.jsp</result>
+    </action>
+    
+    <!-- Daily Menu -->
+    <action name="daily!*" method="{1}" class="com.oxybay.web.actions.admin.menu.daily.DailyMenuAction">    															
+      <result name="success">menu/daily/home.jsp</result>
+      <result name="input">menu/daily/edit.jsp</result>
+    </action>
+    
+    <!-- Tag -->
+    <action name="tag!*" method="{1}" class="com.oxybay.web.actions.admin.menu.tag.TagStatAction">    															
+      <result name="success">menu/tag/home.jsp</result>
+      <result name="input">menu/tag/edit.jsp</result>
+    </action>
+			
+		<!-- Menu Language -->
+		<action name="menuLanguage!*" method="{1}" class="com.oxybay.web.actions.admin.menu.language.LanguageMenuAction">    															
+      <result name="success">menu/language/home.jsp</result>
+      <result name="input">menu/language/edit.jsp</result>
+    </action>
+	</package>
+        
+</struts>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN" "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+<validators>
+ <field name="bean.email">
+  <field-validator type="email"><message key="common.validator.email"/></field-validator>
+  <field-validator type="requiredstring"><message key="common.validator.required"/></field-validator>
+  <field-validator type="stringlength">
+   <param name="maxLength">250</param>
+   <message key="common.validator.stringlength"></message>
+  </field-validator>
+ </field>
+ <field name="bean.timezoneID">
+  <field-validator type="required"><message key="common.validator.required"/></field-validator>
+ </field>
+ <field name="bean.language.label">
+  <field-validator type="requiredstring"><message key="common.validator.required"/></field-validator>
+ </field>
+ <field name="bean.nickname">
+  <field-validator type="requiredstring"><message key="common.validator.required"/></field-validator>
+  <field-validator type="stringlength">
+   <param name="maxLength">20</param>
+	 <message key="common.validator.stringlength"></message>
+  </field-validator>
+ </field>
+ <field name="bean.firstname">
+  <field-validator type="stringlength">
+   <param name="maxLength">50</param>
+   <message key="common.validator.stringlength"></message>
+  </field-validator>
+ </field>
+ <field name="bean.lastname">
+  <field-validator type="stringlength">
+   <param name="maxLength">50</param>
+   <message key="common.validator.stringlength"></message>
+  </field-validator>
+ </field>
+
+ <field name="bean.password">
+  <field-validator type="fieldexpression">
+	 <param name="expression">(bean.id>0 ? true : bean.password.trim()!='')</param>
+	 <message key="common.validator.required"/>
+	</field-validator>
+  <field-validator type="stringlength">
+   <param name="minLength">6</param>
+   <param name="maxLength">12</param>
+   <message key="common.validator.stringlength2"></message>
+  </field-validator>
+ </field>
+ <field name="bean.confirmPassword">
+  <field-validator type="fieldexpression">
+	 <param name="expression"><![CDATA[(bean.id==0 && bean.password.trim()!='' ? bean.password.trim()==bean.confirmPassword.trim() : true)]]></param>
+	 <message key="common.validator.passwordConfirm"/>
+	</field-validator>
+ </field>
+</validators>
